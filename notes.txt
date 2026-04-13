@@ -1,0 +1,24 @@
+1. Load the extension
+
+Open chrome://extensions
+Toggle Developer mode on (top-right)
+Click Load unpacked
+Select the folder: /Users/pranika/Documents/Claude/Projects/ProjectAgent/build/chrome-mv3-dev
+You should see "Buddy" appear in the list with your blue icon
+2. Pin and open it
+
+Click the puzzle-piece icon in Chrome's toolbar → pin Buddy
+Click the Buddy icon → side panel opens on the right
+3. Add your API key
+
+In the side panel header, click Settings (top-right)
+Paste your sk-ant-... key from https://console.anthropic.com
+Click Save settings
+4. Try each feature
+
+Chat tab — type "hi" and hit Send. You should get a Claude reply. The character emoji switches to 🤔 while thinking.
+Tabs tab — shows all your open tabs grouped by domain
+Gmail tab — open mail.google.com in another tab, wait ~2s, then come back; threads should appear
+Social tab — visit twitter/reddit/youtube/etc, come back and watch the bars fill
+Summarize page button in Chat — navigate to any article, click it
+Triage Gmail button in Chat — after Gmail tab has data
