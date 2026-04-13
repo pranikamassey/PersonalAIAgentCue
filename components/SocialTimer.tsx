@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 
 import { getSettings, getSocialTime } from "~lib/storage"
-import { TRACKED_DOMAINS, type BuddySettings, type SocialTimeEntry } from "~types"
+import { TRACKED_DOMAINS, type CueSettings, type SocialTimeEntry } from "~types"
 
 export function SocialTimer() {
   const [entry, setEntry] = useState<SocialTimeEntry | null>(null)
-  const [settings, setSettings] = useState<BuddySettings | null>(null)
+  const [settings, setSettings] = useState<CueSettings | null>(null)
 
   async function refresh() {
     const [e, s] = await Promise.all([getSocialTime(), getSettings()])

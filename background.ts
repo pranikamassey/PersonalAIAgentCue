@@ -2,6 +2,7 @@ import {
   addSocialTime,
   addTodo,
   getSettings,
+  getTodos,
   removeTabOpenTime,
   removeTodo,
   saveGmailThreads,
@@ -10,6 +11,7 @@ import {
 import { TRACKED_DOMAINS, type GmailThread, type TodoItem } from "~types"
 
 const BREAK_ALARM = "buddyBreakReminder"
+const TODO_REMIND_PREFIX = "todoRemind:"
 
 // Allow the toolbar icon to open the side panel.
 chrome.sidePanel
@@ -36,14 +38,28 @@ chrome.runtime.onStartup?.addListener(async () => {
   }
 })
 
-chrome.alarms.onAlarm.addListener((alarm) => {
-  if (alarm.name !== BREAK_ALARM) return
-  chrome.notifications.create({
-    type: "basic",
-    iconUrl: chrome.runtime.getURL("assets/icon.png"),
-    title: "Buddy says: Take a break!",
-    message: "You've been browsing a while. Step away for 5 minutes."
-  })
+chrome.alarms.onAlarm.addListener(async (alarm) => {
+  if (alarm.name === BREAK_ALARM) {
+    chrome.notifications.create({
+      type: "basic",
+      iconUrl: chrome.runtime.getURL("assets/icon.png"),
+      title: "Cue says: Take a break!",
+      message: "You've been browsing a while. Step away for 5 minutes."
+    })
+    return
+  }
+  if (alarm.name.startsWith(TODO_REMIND_PREFIX)) {
+    const id = alarm.name.slice(TODO_REMIND_PREFIX.length)
+    const todos = await getTodos()
+    const todo = todos.find((t) => t.id === id)
+    if (!todo) return
+    chrome.notifications.create({
+      type: "basic",
+      iconUrl: chrome.runtime.getURL("assets/icon.png"),
+      title: "Cue reminder",
+      message: todo.title
+    })
+  }
 })
 
 // Track when tabs are created so we can flag stale ones later.
@@ -71,7 +87,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (windowId != null) {
       chrome.sidePanel
         .open({ windowId })
-        .catch((e) => console.error("[Buddy] sidePanel.open failed", e))
+        .catch((e) => console.error("[Cue] sidePanel.open failed", e))
     }
     sendResponse({ ok: true })
     return false

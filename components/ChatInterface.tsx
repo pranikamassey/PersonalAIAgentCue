@@ -4,7 +4,7 @@ import { askClaude } from "~lib/claude"
 import {
   buildGmailTriagePrompt,
   buildSystemPrompt,
-  type BuddyContext
+  type CueContext
 } from "~lib/prompts"
 import {
   getApiKey,
@@ -33,7 +33,7 @@ async function getActiveBrowserTab(): Promise<chrome.tabs.Tab | undefined> {
   return fallback
 }
 
-async function buildContext(): Promise<BuddyContext> {
+async function buildContext(): Promise<CueContext> {
   const [tabs, gmail, social, current] = await Promise.all([
     chrome.tabs.query({}),
     getGmailThreads(),
@@ -203,7 +203,7 @@ export function ChatInterface({
         ))}
         {loading && (
           <div className="mr-6 animate-pulse rounded-lg bg-gray-800 px-3 py-2 text-xs text-gray-400">
-            Buddy is thinking…
+            Cue is thinking…
           </div>
         )}
         {error && (
@@ -221,7 +221,7 @@ export function ChatInterface({
         }}>
         <input
           className="flex-1 rounded bg-gray-900 px-2 py-1.5 text-xs outline-none ring-1 ring-gray-800 focus:ring-blue-500"
-          placeholder="Ask Buddy…"
+          placeholder="Ask Cue…"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           disabled={loading}

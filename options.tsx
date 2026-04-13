@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react"
 
 import { getSettings, saveSettings } from "~lib/storage"
-import { DEFAULT_SETTINGS, TRACKED_DOMAINS, type BuddySettings } from "~types"
+import { DEFAULT_SETTINGS, TRACKED_DOMAINS, type CueSettings } from "~types"
 
 import "./style.css"
 
 export default function Options() {
-  const [settings, setSettings] = useState<BuddySettings>(DEFAULT_SETTINGS)
+  const [settings, setSettings] = useState<CueSettings>(DEFAULT_SETTINGS)
   const [saved, setSaved] = useState(false)
 
   useEffect(() => {
     getSettings().then(setSettings)
   }, [])
 
-  function update<K extends keyof BuddySettings>(key: K, value: BuddySettings[K]) {
+  function update<K extends keyof CueSettings>(key: K, value: CueSettings[K]) {
     setSettings((s) => ({ ...s, [key]: value }))
   }
 
@@ -35,9 +35,9 @@ export default function Options() {
     <div className="min-h-screen bg-gray-950 p-8 text-white">
       <div className="mx-auto flex max-w-xl flex-col gap-6">
         <header>
-          <h1 className="text-2xl font-bold">Buddy Settings</h1>
+          <h1 className="text-2xl font-bold">Cue Settings</h1>
           <p className="text-sm text-gray-400">
-            Configure your AI browser assistant.
+            Personal AI agent that watches your back.
           </p>
         </header>
 

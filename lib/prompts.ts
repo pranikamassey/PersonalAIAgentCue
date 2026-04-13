@@ -1,6 +1,6 @@
 import type { GmailThread } from "~types"
 
-export interface BuddyContext {
+export interface CueContext {
   tabCount: number
   currentUrl: string
   currentPageTitle: string
@@ -8,8 +8,8 @@ export interface BuddyContext {
   socialTimeToday: Record<string, number> // minutes
 }
 
-export function buildSystemPrompt(ctx: BuddyContext): string {
-  return `You are Buddy, a friendly personal assistant living in the user's Chrome browser.
+export function buildSystemPrompt(ctx: CueContext): string {
+  return `You are Cue, a friendly personal AI agent that watches the user's back while they browse.
 
 Current context:
 - Open tabs: ${ctx.tabCount}

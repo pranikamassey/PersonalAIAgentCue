@@ -53,10 +53,10 @@ export default function SidePanel() {
   return (
     <div className="flex h-screen flex-col bg-gray-950 text-white">
       <header className="flex items-center gap-3 border-b border-gray-800 p-3">
-        <Character state={characterState} size={56} />
+        <Character state={characterState} size={72} />
         <div className="flex-1">
-          <h1 className="text-sm font-bold">Buddy</h1>
-          <p className="text-xs text-gray-400">Your browser assistant</p>
+          <h1 className="text-sm font-bold">Cue</h1>
+          <p className="text-xs text-gray-400">AI agent that watches your back</p>
         </div>
         <button
           onClick={() => chrome.runtime.openOptionsPage?.()}

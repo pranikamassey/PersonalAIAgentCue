@@ -12,7 +12,7 @@ export interface GmailThread {
   isUnread: boolean
 }
 
-export interface BuddySettings {
+export interface CueSettings {
   claudeApiKey: string
   breakIntervalMinutes: number
   breakRemindersEnabled: boolean
@@ -28,25 +28,26 @@ export interface TabOpenTimes {
   [tabId: number]: number // timestamp ms
 }
 
-export type TodoType = "form" | "article"
+export type TodoType = "form" | "article" | "custom"
 
 export interface TodoItem {
-  id: string // e.g. `form:<url>` or `article:<url>`
+  id: string // e.g. `form:<url>`, `article:<url>`, or `custom:<uuid>`
   type: TodoType
   url: string
   title: string
   note: string
   createdAt: number
+  remindAt?: number // epoch ms, for custom todos
 }
 
 export const MAX_TODOS = 50
 
-export const DEFAULT_SETTINGS: BuddySettings = {
+export const DEFAULT_SETTINGS: CueSettings = {
   claudeApiKey: "",
   breakIntervalMinutes: 60,
   breakRemindersEnabled: true,
   socialLimits: {
-    "twitter.com": 20,
+    "instagram.com": 20,
     "x.com": 20,
     "reddit.com": 20,
     "linkedin.com": 20,
@@ -55,7 +56,7 @@ export const DEFAULT_SETTINGS: BuddySettings = {
 }
 
 export const TRACKED_DOMAINS = [
-  "twitter.com",
+  "instagram.com",
   "x.com",
   "reddit.com",
   "linkedin.com",

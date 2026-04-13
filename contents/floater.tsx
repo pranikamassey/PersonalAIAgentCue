@@ -299,7 +299,7 @@ export default function Floater() {
           onMouseLeave={scheduleLeave}
           onMouseDown={onOrbMouseDown}
           onClick={onOrbClick}
-          title="Click to chat · hover for actions · drag to move">
+          title="Cue · click to chat · hover for actions · drag to move">
           <DotLottieReact
             src={globbyUrl}
             loop

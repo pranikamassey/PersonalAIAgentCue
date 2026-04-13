@@ -1,8 +1,8 @@
 {
-  "name": "buddy-extension",
-  "displayName": "Buddy",
+  "name": "cue-extension",
+  "displayName": "Cue",
   "version": "0.1.0",
-  "description": "AI personal assistant living in your Chrome side panel",
+  "description": "Cue — Personal AI agent that watches your back while you browse",
   "author": "pranika",
   "scripts": {
     "dev": "plasmo dev",
@@ -44,7 +44,7 @@
       "default_path": "sidepanel.html"
     },
     "action": {
-      "default_title": "Open Buddy"
+      "default_title": "Open Cue"
     }
   }
 }

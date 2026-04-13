@@ -1,7 +1,7 @@
 import {
   DEFAULT_SETTINGS,
   MAX_TODOS,
-  type BuddySettings,
+  type CueSettings,
   type GmailThread,
   type SocialTimeEntry,
   type TabOpenTimes,
@@ -17,12 +17,12 @@ const KEYS = {
   todos: "todos"
 } as const
 
-export async function getSettings(): Promise<BuddySettings> {
+export async function getSettings(): Promise<CueSettings> {
   const res = await chrome.storage.local.get(KEYS.settings)
   return { ...DEFAULT_SETTINGS, ...(res[KEYS.settings] ?? {}) }
 }
 
-export async function saveSettings(settings: BuddySettings): Promise<void> {
+export async function saveSettings(settings: CueSettings): Promise<void> {
   await chrome.storage.local.set({ [KEYS.settings]: settings })
 }
 

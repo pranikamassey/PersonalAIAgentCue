@@ -10,9 +10,9 @@ export default function Popup() {
 
   return (
     <div className="flex w-56 flex-col gap-2 bg-gray-950 p-3 text-white">
-      <h1 className="text-sm font-bold">Buddy</h1>
+      <h1 className="text-sm font-bold">Cue</h1>
       <p className="text-xs text-gray-400">
-        Your AI browser assistant.
+        Personal AI agent that watches your back.
       </p>
       <button
         onClick={openPanel}

@@ -32,7 +32,7 @@ export function GmailTriage() {
       const key = await getApiKey()
       const result = await askClaude(
         [{ role: "user", content: buildGmailTriagePrompt(threads) }],
-        "You are Buddy, a concise inbox triage assistant.",
+        "You are Cue, a concise inbox triage assistant.",
         key
       )
       setAdvice(result)
@@ -49,7 +49,7 @@ export function GmailTriage() {
       const key = await getApiKey()
       const result = await askClaude(
         [{ role: "user", content: buildDraftReplyPrompt(threads[index]) }],
-        "You are Buddy, a concise email drafting assistant.",
+        "You are Cue, a concise email drafting assistant.",
         key
       )
       setDrafts((d) => ({ ...d, [index]: result }))
@@ -61,7 +61,7 @@ export function GmailTriage() {
   if (threads.length === 0) {
     return (
       <div className="p-3 text-sm text-gray-400">
-        Open Gmail in another tab and Buddy will start reading your inbox.
+        Open Gmail in another tab and Cue will start reading your inbox.
       </div>
     )
   }
